@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<title>form表单的学习</title>
+</head>
+<body>
+    表单新增加的一些特性      form  你这个input隶属于哪一个form的  <br/>
+     placeholder      pattern:正则表达式，用来限制文本框所输入的内容<br/>
+   <input type="text" name="text" form="form1" pattern="[a-z]{3}" /><br/>
+
+	<form id="form1" action="" method="">
+
+		<p>input标签的类型：text、password、button、submit、reset、file、radio、checkbox</p>
+
+		<!-- 输入网址，会自动验证，请记得带上http协议 -->
+		<p>请输入一个网址：<input type="url" name="weburl" placeholder="请带上协议" /></p>
+
+		<!-- 输入邮箱，会自动验证（验证很粗糙）一个网页里面只允许有一个 自动获焦（刷新网页后鼠标自动跳转到那去）autofocus -->
+		<p>请输入一个email邮箱：<input type="email" name="email" autofocus /></p>
+
+		<!-- 如果浏览器不支持html5新的表单类型，那么会变成普通的文本框 -->
+		<p>date:<input type="date" name="date" /></p>
+		<p>color:<input type="color" name="color" /></p>
+		<p>number:<input type="number" name="number" /></p>
+        <!-- autocomplete自动完成：是否自动保存你提交的数据 取值为on时，保存；取值为off时，不保存 -->
+		<p>tel:<input type="tel" name="tel" autocomplete="off" /></p>
+		<p>search:<input type="search" name="search" autofocus autocomplete="off"></p>
+
+		<!-- required：必要的 （这一栏必须要填写）-->
+		<p>tel:<input type="tel" name="tel" required /></p>
+        
+        <!-- formaction  可以提交给不同的网页 -->
+		<p><input type="submit" value="提交" formaction="?page=1" /></p>
+		<p><input type="submit" value="提交" formaction="?page=2" /></p>
+		<p><input type="submit" value="提交" formaction="?page=3" /></p>
+	</form>
+
+</body>
+</html>

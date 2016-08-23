@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>文字任意拖拽（小案例）</title>
+    <style>
+        ul{
+		   height:300px;
+		   margin:20px;
+		   background-color:#eee;
+		}
+		ul li{
+		   background:#ccc;
+		   padding:10px;
+		   margin-bottom:10px;
+		}
+    </style>
+</head>
+
+<body>
+   
+    <ul id="drag-elements">
+       <li draggable="true">AAA</li>
+       <li draggable="true">BBB</li>
+       <li draggable="true">CCC</li>
+    </ul>
+    
+    <ul id="drop-target"></ul>
+    
+    <script type="text/javascript">
+        //获取目标元素和所有的拖拽元素
+		var target=document.getElementById("drop-target");
+		var dragElements=document.getElementsByTagName("li");
+		
+		var elementDragged;
+		
+		for(var i=0;i<dragElements.length;i++){
+		   dragElements[i].addEventListener("dragstart",function(e){
+		        //  键：值
+				e.dataTransfer.setData("text",this.innerHTML);
+				//被拖拽的元素
+				elementDragged=this;
+		   },false);
+		   
+		   dragElements[i].addEventListener("dragend",function(e){
+		        //拖放结束，拖放这个元素设为null
+				elementDragged=null;
+		   },false);
+		}
+		
+		//被拖放的元素停留在ul上面
+		target.addEventListener("dragover",function(e){
+		     //改变鼠标形状
+			 e.preventDefault();    //阻止默认行为
+			 e.dataTransfer.dropEffect="move";
+		},false);
+		
+		target.addEventListener("drop",function(e){
+		     e.preventDefault();
+			 for(var j=0;j<dragElements.length;j++){
+			   //获取数据
+			   this.innerHTML=e.dataTransfer.getData("text");
+			   //移除原先的节点
+			   document.getElementById("drag-elements").removeChild(elementDragged);
+			   var oli=document.createElement("li");
+			   target.appendChild(oli);
+			   var otext=oli.createTextNode(this.innerHTML);
+			 }
+		},false);
+		
+    </script>
+    
+</body>
+</html>

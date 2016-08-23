@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+form {
+	margin:10px auto;
+	width:400px;
+	padding:40px;
+	font-size:14px;
+	font-family:Arial, Helvetica, sans-serif;
+	border-radius:10px;
+	background-color:#366;
+	font-weight:bold;
+	color:#FFF;
+}
+form label {
+	display:block;
+	padding:5px;
+}
+form label span {
+	width:20%;
+	display:inline-block;
+	font-family:"宋体";
+	font-size:16px;
+	text-align:right;
+}
+form label input {
+	line-height:22px;
+	height:25px;
+	border:3px solid #f90;
+	width:70%;
+}
+form label input:focus {
+	border:3px solid #f00;
+	outline:none;
+}
+form input[type=submit] {
+	margin-left:22%;
+	margin-top:20px;
+	width:100px;
+	border:3px solid #f00;
+	background-color:#f00;
+	font-size:18px;
+	letter-spacing:5px;
+	color:#fff;
+	font-weight:bold;
+}
+form #error{
+	border:1px solid #999;
+	background-color:#ccc;
+	font-size:12px;
+	color:#f00;
+	padding:5px;
+	line-height:18px;
+}
+</style>
+
+</head>
+<body>
+<form id="register" name="register">
+  <label for="firstName"><span>姓名</span>
+    <input name="firstName" type="text" title="姓名" placeholder="请输入您的姓名" required />
+  </label>
+  <label for="age"><span>年龄</span>        
+  <!-- min最小值  max最大值   step每一次动多少量  value默认值 -->
+    <input id="age" name="age" type="range" min="0" max="99" step="1" value="20" onchange="displayAage.value=this.value" />
+    <output name="displayAage">20</output>
+  </label>
+  <label for="emailaddress"><span>邮箱</span>
+    <input type="email" name="emailaddress" title="邮箱" placeholder="请输入您的邮箱" required />
+  </label>
+  <label for="weibo"><span>微博</span>
+    <input type="url" name="weibo" title="微博" placeholder="请输入您的微博地址" required />
+  </label>
+  <label for="graduation"><span>毕业时间</span>
+    <input name="graduation" type="date" title="毕业时间" placeholder="请输入您的毕业时间" />
+  </label>
+  <label for="score"><span>考试成绩</span>
+    <input name="score" type="number" title="考试成绩" placeholder="请输入您的考试成绩" min="0" max="10" step="0.2" />
+  </label>
+  <label for="country"><span>国家</span>
+    <input name="country" type="text" title="国家" list="countries" />
+  </label>
+  <datalist id="countries">
+    <option value="Australia">Australia</option>
+    <option value="Germany">Germany</option>
+    <option value="United Kingdom">United Kingdom</option>
+    <option value="United States">United States </option>
+  </datalist>
+  <input type="submit" name="submit" value="提交" onclick="clearError()" />
+  <div id="error"></div>
+</form>
+
+    <script type="text/javascript">
+    	winfow.onload=function(){
+    		var forms=document.getElementById("register");
+    		//在submit提交之前所执行的代码，捕获到错误，去处理    true:代表允许冒泡
+    		forms.addEventListener("invalid",invalidHandler,false);
+    		// （自己编写错误）自定义错误，它会往上冒泡，这一段代码肯定会出错
+    		// document.getElementById("age").setCustomValidity("你还未成年，不能上网");
+    	}
+
+        function invalidHandler(event){
+            //alert("a");
+            //首先，获得到出错的元素，并且得到validity这个对象，因为里面包含了错误信息
+            var validity=event.srcElement.validity;
+            var str="";
+            if(validity.customError){
+            	str=event.srcElement.validationMessage;
+            }else{
+            	if(validity.valueMissing){
+            		str+="不能为空";
+            	}
+            	if(validity.typeMismatch){
+            		str+="与类型不匹配";
+            	}
+            }
+            str=event.srcElement.title+str;
+            addError(str);
+            // 阻止事件冒泡
+            event.stopPropagation();
+            event.preventDefault();
+        }
+        function addError(str){
+        	document.getElementById("error").innerHTML=str;
+        }
+
+
+
+    </script>
+
+</body>
+</html>

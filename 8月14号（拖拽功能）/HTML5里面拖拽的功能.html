@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5里面拖拽的功能</title>
+    <style>
+       div{
+          width:200px;
+          height:200px;
+          background:lime;
+       }
+       p{
+          width:300px;
+          height:300px;
+          margin-left:300px;
+          background:pink;
+       }
+    </style>
+</head>
+
+<body>
+   
+   draggable:可拖拽的    true   false  auto    <br/>
+   auto:img和a标签默认是可以拖拽的
+   
+   <div draggable="true">拖拽元素</div>
+   <p>目标元素</p>
+   拖放的事件：
+   
+   <script type="text/javascript">
+        var div=document.getElementsByTagName("div")[0];
+		//1、开始拖放    只能触发一次
+		div.addEventListener("dragstart",function(){
+		      console.log("开始拖拽");
+		},false);
+		
+		//2、正在拖放
+		div.addEventListener("drag",function(){
+		     console.log("正在拖拽中");
+		},false);
+		
+		//3、被拖放的元素或者是从文件系统中选中的文件，拖放落下的时候触发     （从始到终都没有被触发一次）
+		div.addEventListener("drop",function(){
+		      console.log("拖放落下");
+		},false);
+		
+		//4、拖放结束
+		div.addEventListener("dragend",function(){
+		      console.log("拖放结束");
+		},false);
+		
+		//目标元素和被拖拽元素可以是同一个
+		var p=document.getElementsByTagName("p")[0];
+		
+		p.addEventListener("dragenter",function(){
+		      console.log("拖放进入了目标元素");
+		},false);
+		p.addEventListener("dragleave",function(){
+		      console.log("拖放离开了目标元素");
+		},false);
+		p.addEventListener("dragover",function(){
+		      console.log("拖放元素停留在目标元素之中");
+		},false);
+		
+		
+		
+   </script>
+     
+</body>
+</html>

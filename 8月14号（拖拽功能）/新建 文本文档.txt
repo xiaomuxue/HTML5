@@ -1,0 +1,34 @@
+HTML5拖放事件
+dragstart：网页元素开始拖动时触发。
+drag：被拖动的元素在拖动过程中持续触发。
+dragenter：被拖动的元素进入目标元素时触发，应在目标元素监听该事件。
+dragleave：被拖动的元素离开目标元素时触发，应在目标元素监听该事件。
+dragover：被拖动元素停留在目标元素之中时持续触发，应在目标元素监听该事件。
+drap：被拖动元素或从文件系统选中的文件，拖放落下时触发。
+dragend：网页元素拖动结束时触发。
+
+
+html5提供了DataTransfer对象，用以支持拖拽数据的存储
+
+dataTransfer对象的属性：
+dropEffect：拖放的操作类型，决定了浏览器如何显示鼠标形状，可能的值为
+copy、move、link和none。
+effectAllowed：指定所允许的操作，可能的值为copy、move、link、copyLink、
+copyMove、linkMove、all、none和uninitialized（默认值，等同于all，）。
+files：包含一个FileList对象，表示拖放所涉及的文件，主要用于处理从文件系统拖
+入浏览器的文件。
+types：储存在DataTransfer对象的数据的类型。
+
+
+dataTransfer对象的方法：
+setData(format, data)：在dataTransfer对象上储存数据。第一个参数format用来
+指定储存的数据类型，比如text、url、text/html等。
+getData(format)：从dataTransfer对象取出数据。
+clearData(format)：清除dataTransfer对象所储存的数据。如果指定了format参数，
+则只清除该格式的数据，否则清除所有数据。
+setDragImage(imgElement, x, y)：指定拖动过程中显示的图像。默认情况下，许
+多浏览器显示一个被拖动元素的半透明版本。参数imgElement必须是一个图像元
+素，而不是指向图像的路径，参数x和y表示图像相对于鼠标的位置。
+
+dataTransfer对象允许在其上存储数据，这使得在被拖动元素与目标元素之间传
+送信息成为可能。

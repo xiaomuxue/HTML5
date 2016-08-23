@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		ul {
+		    margin:20px auto;
+		    width:800px;
+		    zoom:1;
+		}
+		ul:after{
+		    content:".";
+		    display:block;
+		    font-size:0;
+		    line-height:0;
+		    clear:both;
+		    visibility:hidden;
+		}
+		li {
+			list-style: none;
+		    width:200px;
+		    height:125px;
+		    float:left;
+		    background-color:#CCC;
+		    text-align:center;
+		    line-height:120px;
+		    font-size:50px;
+		    color:#F60;
+		}
+		.dragStart img{
+		    -webkit-filter: grayscale(100%); 
+		    -moz-filter: grayscale(100%); 
+		    -ms-filter: grayscale(100%); 
+		    -o-filter: grayscale(100%); 
+		    filter: grayscale(100%); 
+		    filter: gray; 
+		}
+		img{
+			width:200px;
+			height:125px;
+		}
+	</style>
+</head>
+<body>
+	<ul id="drag-elements">
+	    <li id="A" draggable="true"><img src="images/1.jpg" alt="" /></li>
+	    <li id="B" draggable="true"><img src="images/2.jpg" alt="" /></li>
+	    <li id="C" draggable="true"><img src="images/3.jpg" alt="" /></li>
+	    <li id="D" draggable="true"><img src="images/4.jpg" alt="" /></li>
+	    <li id="E" draggable="true"><img src="images/5.jpg" alt="" /></li>
+	    <li id="F" draggable="true"><img src="images/6.jpg" alt="" /></li>
+	    <li id="G" draggable="true"><img src="images/7.jpg" alt="" /></li>
+	    <li id="H" draggable="true"><img src="images/8.jpg" alt="" /></li>
+	</ul>
+
+	<script type="text/javascript">
+		
+	</script>
+</body>
+</html>

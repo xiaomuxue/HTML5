@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5拖拽（dragable）实现拖拽效果</title>
+    <style>
+         #box{
+			 position:absolute;
+			 left:300px;
+			 top:200px;
+			 font-size:12px;
+			 background:pink;
+			 padding:5px;
+			 box-shadow:2px 2px 4px #ccc;
+			 -moz-box-shadow:2px 2px 4px #ccc;
+			 -webkit-box-shadow:2px -2px 4px #ccc;
+			 -ms-box-shadow:2px 2px 4px #ccc;
+	    }
+       #content{
+		   border:1px solid #339;
+	   }
+       #top{
+		   width:430px;
+		   line-height:25px;
+		   cursor:move;
+		   background:#99F;
+		   border-bottom:1px solid #339;
+		   padding-left:5px;
+	  }
+      #close{
+		  color:red;
+		  font-size:20px;
+		  font-weight:bold;
+		  float:right;
+		  position:absolute;
+		  top:5px;right:10px;
+		  cursor:pointer;
+	 }
+     #bottom{
+		 width:420px;
+		 height:250px;
+		 padding:10px 5px;
+		 background:#fff;
+     }
+    </style>
+</head>
+
+<body>
+    
+    <div id="box">
+       <div id="content">
+           <div id="top" draggable="true">
+              可拖拽
+              <span id="close" onClick="aaa()">X</span>
+           </div>
+           <div id="bottom">
+               内容。。。。
+           </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+	
+        var otop=document.getElementById("top");
+		
+		otop.addEventListener("drag",function(){
+		     var oBox=document.getElementById("box");
+			 
+			 var myx=event.clientX;
+			 var myy=event.clientY;
+			 
+			 if(myx==0){
+		        return;
+			 }
+			 
+			 oBox.style.left=event.clientX+"px";
+			 oBox.style.top=event.clientY+"px";
+			 
+		},false);
+		
+		document.getElementById("close").onclick=function(){
+		    document.getElementById("box").style.display="none";
+		}
+		
+    </script>
+    
+</body>
+</html>
